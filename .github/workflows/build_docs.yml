@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/build_docs.yml
+      - docs/**
+      - mkdocs.yml
 
 jobs:
   deploy:
