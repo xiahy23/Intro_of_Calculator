@@ -24,8 +24,8 @@ jobs:
 
       - name: Install MkDocs and dependencies
         run: |
-          pip install mkdocs=1.4.3
-          pip install mkdocs-material=8.5.11
+          pip install mkdocs==1.4.3
+          pip install mkdocs-material==8.5.11
 
       - name: Build the documentation
         run: mkdocs build
