@@ -1,0 +1,32 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main  # 当代码推送到 main 分支时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install MkDocs and dependencies
+        run: |
+          pip install mkdocs mkdocs-material  # 安装 MkDocs 和主题
+
+      - name: Build the documentation
+        run: mkdocs build  # 构建文档
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site  # 发布目录
